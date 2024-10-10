@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>初识Vue</title>
+        <script type="text/javascript" src="../js/vue.js"></script>
+        <style>
+            *{
+                margin: 10px;
+            }
+            .demo1{
+                height: 50px;
+                background-color: antiquewhite;
+            }
+            .box1{
+                background-color: aqua;
+            }
+            .box2{
+                background-color: aquamarine;
+            }
+            .list{
+                width: 200px;
+                height: 200px;
+                background-color: skyblue;
+                overflow: auto;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="root">
+            <h2>学校名称：{{names}}</h2>
+            <h2>学校地址：{{address}}</h2>
+            <!-- prevent阻止默认事件 -->
+            <a href="https://www.google.com" @click.prevent="jump2google()">点击跳转谷歌</a>
+            <!-- stop阻止事件冒泡 -->
+            <div class="demo1" @click="showInfo2">
+                <button @click.stop="showInfo">点我提示信息</button>
+            </div>
+            <!-- 使用事件的捕获模式 -->
+            <button @click.once="showInfo">点我提示信息</button>
+            <div class="box1" @click.capture="showmsg(1)">
+                div1
+                <div class="box2" @click="showmsg(2)">div2</div>
+            </div>
+            <!-- 只有event.target是当前操作元素的时候才触发事件 -->
+            <div class="box1" @click.self="showInfo">
+                div1
+                <div class="box2" @click="showInfo">div2</div>
+            </div>
+            <!-- passive 事件默认行为立即执行，无需等待事件回调执行完毕 -->
+            <ul @wheel.passive="demo" class="list">
+            <!-- <ul @scroll="demo" class="list"> -->
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+                <li>6</li>
+                <li>7</li>
+                <li>8</li>
+            </ul>
+        </div>
+    </body>
+        <script type="text/javascript">
+            Vue.config.productionTip = false
+            let vm = new Vue({
+                el:'#root',
+                data:{
+                    names:'广东海洋大学',
+                    address:'海大路一号'
+                },
+                methods:{
+                    jump2google(){
+                        alert('你好！')
+                    },
+                    showInfo(){
+                        alert('点击我了')
+                    },
+                    showInfo2(){
+                        alert('showinfo2')
+                    },
+                    showmsg(msg){
+                        console.log(msg)
+                    },
+                    demo(){
+                        console.log('@')
+                    }
+                }
+            })
+        </script>
+</html>

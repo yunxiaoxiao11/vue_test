@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>数据绑定</title>
+        <script type="text/javascript" src="../js/vue.js"></script>
+    </head>
+    <body>
+        <div id="root">
+            <!-- v-bind  -->
+            单向数据绑定<input type="text" :value="names"><br>
+
+            <!-- v-model 只能用于表单元素的value 简写为 -->
+            双向数据绑定<input type="text" v-model="names">
+        </div>
+    </body>
+
+        <script type="text/javascript">
+            Vue.config.productionTip = false // 启动时生成生产数据
+
+            new Vue({
+                el:'#root', // element：元素，用于指定当前Vue实例为哪个容器服务，通常为css选择器字符串
+                data:{ // data用户存储供el指定的容器使用
+                    names:'瓦鲁多',
+                    url:'https://www.google.com'
+                }
+            })
+        </script>
+</html>

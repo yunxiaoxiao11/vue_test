@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+  <meta charset="UTF-8"/>
+  <title>姓名案例</title>
+  <style></style>
+  <script src="../js/vue.js" type="text/javascript"></script>
+  <script src="../js/dayjs.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="root">
+  <h3>现在的时间是{{formatTime}}</h3>
+  <h3>现在的时间是{{getFmtTime()}}</h3>
+  <h3>现在的时间是{{time | timeFormater}}</h3>
+  <h3>现在的时间是{{time | timeFormater('YYYY MM-DD') | timeSlice}}</h3>
+</div>
+</body>
+
+<script type="text/javascript">
+  Vue.config.productionTip = false
+  Vue.filter('timeFormater', function (value, formater = 'YYYY MM-DDTHH:mm:ss SSS [Z] A') {
+    return dayjs(value).format(formater)
+  })
+  const vm = new Vue({
+    el: '#root',
+    data: {
+      time: 1725019435039
+    },
+    computed: {
+      formatTime() {
+        return dayjs(this.time).format('YYYY MM-DDTHH:mm:ss SSS [Z] A')
+      }
+    },
+    methods: {
+      getFmtTime() {
+        return dayjs(this.time).format('YYYY MM-DDTHH:mm:ss SSS [Z] A')
+      }
+    },
+    filters: {
+      /*
+            timeFormater(value, formater = 'YYYY MM-DDTHH:mm:ss SSS [Z] A') {
+              return dayjs(value).format(formater)
+            },
+      */
+      timeSlice(value, length = 4) {
+        return value.slice(0, length)
+      },
+    }
+  })
+</script>
+</html>

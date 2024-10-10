@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>初识Vue</title>
+        <script type="text/javascript" src="../js/vue.js"></script>
+    </head>
+    <body>
+        <div id="root">
+            <h1>hello {{names}}！</h1>
+            <a v-bind:href="url">点击跳转到谷歌首页</a>
+        </div>
+    </body>
+        <script type="text/javascript">
+            Vue.config.productionTip = false // 阻止vue在启动时生成生产提示
+
+            new Vue({
+                el:'#root', // element：元素，用于指定当前Vue实例为哪个容器服务，通常为css选择器字符串
+                data:{ // data用户存储供el指定的容器使用
+                    names:'小雨',
+                    url:'https://www.google.com'
+                }
+            })
+        </script>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>初识Vue</title>
+        <script type="text/javascript" src="../js/vue.js"></script>
+    </head>
+    <body>
+        <div id="root">
+            <h2>学校名称：{{names}}</h2>
+            <h2>学校地址：{{address}}</h2>
+            <button v-on:click="showhello(names)">点我查看信息</button>
+        </div>
+    </body>
+        <script type="text/javascript">
+            Vue.config.productionTip = false
+            let vm = new Vue({
+                el:'#root',
+                data:{
+                    names:'广东海洋大学',
+                    address:'海大路一号'
+                },
+                methods:{
+                    showhello(names){
+                        alert(names+'你好！')
+                    }
+                }
+            })
+        </script>
+</html>

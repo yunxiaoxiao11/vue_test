@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+  <meta charset="UTF-8"/>
+  <title>姓名案例</title>
+  <style></style>
+  <script src="../js/dayjs.js" type="text/javascript"></script>
+  <style>
+    [v-cloak] {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+<div id="root" v-cloak>
+  <div>现在的时间是{{formatTime}}</div>
+  <div v-text="formatTime">现在的时间是{{formatTime}}</div>
+  <div v-html="str">现在的时间是{{formatTime}}</div>
+  <h2 v-pre>初始值{{n}}</h2>
+  <h2 v-once>初始值{{n}}</h2>
+  <h2>点击＋{{n}}</h2>
+  <button @click="n++">点击</button>
+</div>
+<script src="../js/vue.js" type="text/javascript"></script>
+</body>
+
+<script type="text/javascript">
+  Vue.config.productionTip = false
+  const vm = new Vue({
+    el: '#root',
+    data: {
+      time: 1725019435039,
+      str: '<h3>111</h3>',
+      n: 1
+    },
+    computed: {
+      formatTime() {
+        return dayjs(this.time).format('YYYY MM-DDTHH:mm:ss SSS [Z] A')
+      }
+    },
+    methods: {
+      getFmtTime() {
+        return dayjs(this.time).format('YYYY MM-DDTHH:mm:ss SSS [Z] A')
+      }
+    },
+    filters: {
+      timeFormater(value, formater = 'YYYY MM-DDTHH:mm:ss SSS [Z] A') {
+        return dayjs(value).format(formater)
+      },
+      timeSlice(value, length = 4) {
+        return value.slice(0, length)
+      },
+    }
+  })
+</script>
+</html>

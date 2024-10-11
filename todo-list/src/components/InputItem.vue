@@ -1,21 +1,21 @@
 <template>
   <div class="todo-header">
     <input
-      type="text"
-      placeholder="请输入你的任务名称，按回车键确认"
-      @keyup.enter="addTodo"
-      v-model="content"
+        type="text"
+        placeholder="请输入你的任务名称，按回车键确认"
+        @keyup.enter="addTodo"
+        v-model="content"
     />
   </div>
 </template>
 
 <script>
-import { nanoid } from "nanoid";
+import {nanoid} from "nanoid";
 import TodoItem from "@/components/TodoItem.vue";
 
 export default {
   name: "InputItem",
-  components: { TodoItem },
+  components: {TodoItem},
   data() {
     return {
       content: "",
@@ -58,6 +58,6 @@ export default {
   outline: none;
   border-color: rgba(82, 168, 236, 0.8);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
-    0 0 8px rgba(82, 168, 236, 0.6);
+  0 0 8px rgba(82, 168, 236, 0.6);
 }
 </style>

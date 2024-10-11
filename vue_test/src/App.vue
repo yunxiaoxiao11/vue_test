@@ -1,25 +1,19 @@
 <script>
-import Student from "./components/Student.vue";
-import School from "./components/School.vue";
+import List from "@/components/List.vue";
+import Search from "@/components/Search.vue";
 
 export default {
   name: "App",
-  components: { Student, School },
-  data() {
-    return {
-      msg: "欢迎参观海洋大学: ",
-      studentName: "",
-    };
-  },
+  components: {Search, List},
 };
 </script>
 
 <template>
-  <div>
-    <h1 ref="h1_title">{{ msg }}{{ studentName }}</h1>
-    <School />
-    <Student />
+  <div class="container">
+    <Search/>
+    <List/>
   </div>
 </template>
 
-<style></style>
+<style>
+</style>
